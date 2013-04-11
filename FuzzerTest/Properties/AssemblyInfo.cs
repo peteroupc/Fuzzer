@@ -13,8 +13,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FuzzerTest")]
-[assembly: AssemblyCopyright("Copyright 2009")]
+[assembly: AssemblyProduct("Fuzzer")]
+[assembly: AssemblyCopyright("Public domain under CC0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
