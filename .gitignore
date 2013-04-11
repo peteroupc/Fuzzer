@@ -1,0 +1,8 @@
+*.dll
+*.exe
+*.userprefs
+*.usertasks
+Fuzzer/bin/
+Fuzzer/obj/
+FuzzerTest/bin/
+FuzzerTest/obj/
