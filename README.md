@@ -1,4 +1,10 @@
-File Fuzzer by Peter O. -- Public Domain -- [http://upokecenter.com](http://upokecenter.com)
+#File Fuzzer
+
+By Peter O. -- Public Domain -- [http://upokecenter.com](http://upokecenter.com)
+
+If you like this software, consider donating to me at this link: [http://upokecenter.dreamhosters.com/articles/donate-now-2/](http://upokecenter.dreamhosters.com/articles/donate-now-2/)
+
+----
 
 This is a program that generates slightly altered versions
 of data files, for testing algorithms that parse file formats.
