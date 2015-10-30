@@ -7,19 +7,19 @@ using PeterO;
 
 namespace PeterO {
     /// <summary>Not documented yet.</summary>
-public sealed class XmlConfigFile {
+  public sealed class XmlConfigFile {
     XmlElement root;
     Dictionary<string, XmlElement> dict;
     private void Initialize(XmlElement element) {
       if (element == null) {
- throw new ArgumentNullException("element");
-}
+        throw new ArgumentNullException("element");
+      }
       this.root = element;
       this.dict = new Dictionary<string, XmlElement>();
-      foreach(XmlNode node in this.root.ChildNodes) {
+      foreach (XmlNode node in this.root.ChildNodes) {
         var e = node as XmlElement;
         if (e != null) {
-          this.dict[e.Name]=e;
+          this.dict[e.Name] = e;
         }
       }
     }
@@ -28,11 +28,11 @@ public sealed class XmlConfigFile {
     }
     private XmlConfigFile(XmlReader reader, string rootElement) {
       if (reader == null) {
- throw new ArgumentNullException("reader");
-}
+        throw new ArgumentNullException("reader");
+      }
       if (rootElement.Length == 0) {
- throw new ArgumentException("'rootElement' is empty.");
-}
+        throw new ArgumentException("'rootElement' is empty.");
+      }
       XmlDocument doc;
       try {
         doc = new XmlDocument();
@@ -45,8 +45,8 @@ public sealed class XmlConfigFile {
         throw new XmlConfigException(e.Message, e);
       }
       if (doc.DocumentElement == null) {
- throw new XmlConfigException("The file contains no XML element.");
-}
+        throw new XmlConfigException("The file contains no XML element.");
+      }
       if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement))
         throw new XmlConfigException(
           ("The XML file's root element is " + doc.DocumentElement.Name +
@@ -55,11 +55,11 @@ public sealed class XmlConfigFile {
     }
     private XmlConfigFile(string path, string rootElement) {
       if (path == null) {
- throw new ArgumentNullException("path");
-}
+        throw new ArgumentNullException("path");
+      }
       if (rootElement.Length == 0) {
- throw new ArgumentException("'rootElement' is empty.");
-}
+        throw new ArgumentException("'rootElement' is empty.");
+      }
       XmlDocument doc;
       try {
         doc = new XmlDocument();
@@ -76,8 +76,8 @@ public sealed class XmlConfigFile {
         throw new XmlConfigException(e.Message, e);
       }
       if (doc.DocumentElement == null) {
- throw new XmlConfigException("The file contains no XML element.");
-}
+        throw new XmlConfigException("The file contains no XML element.");
+      }
       if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement))
         throw new XmlConfigException(
           ("The XML file's root element is " + doc.DocumentElement.Name +
@@ -88,12 +88,12 @@ public sealed class XmlConfigFile {
       return new XmlConfigFile(reader, rootElement);
     }
     public static XmlConfigFile Create(Stream stream, string rootElement) {
-      using(XmlReader reader = XmlReader.Create(stream)) {
+      using (XmlReader reader = XmlReader.Create(stream)) {
         return new XmlConfigFile(reader, rootElement);
       }
     }
 public static XmlConfigFile Create(TextReader textReader, string rootElement) {
-      using(XmlReader reader = XmlReader.Create(textReader)) {
+      using (XmlReader reader = XmlReader.Create(textReader)) {
         return new XmlConfigFile(reader, rootElement);
       }
     }
@@ -112,9 +112,9 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
     /// file. The exception's InnerException contains more information.</exception>
     public static XmlConfigFile FromXmlString(string xml, string rootElement) {
       if (xml == null) {
- throw new ArgumentNullException("xml");
-}
-      using(var reader = new StringReader(xml)) {
+        throw new ArgumentNullException("xml");
+      }
+      using (var reader = new StringReader(xml)) {
         return Create(reader, rootElement);
       }
     }
@@ -137,8 +137,8 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
     /// <returns>An IEnumerable(XmlConfigFile) object.</returns>
-public IEnumerable<XmlConfigFile> GetAllElementConfig(string elementName) {
-      foreach(XmlNode node in this.root.ChildNodes) {
+    public IEnumerable<XmlConfigFile> GetAllElementConfig(string elementName) {
+      foreach (XmlNode node in this.root.ChildNodes) {
         var e = node as XmlElement;
         if (e != null && e.Name.Equals(elementName)) {
           yield return new XmlConfigFile(e);
@@ -149,7 +149,7 @@ public IEnumerable<XmlConfigFile> GetAllElementConfig(string elementName) {
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
     /// <returns>A XmlConfigFile object.</returns>
-public XmlConfigFile GetElementConfig(string elementName) {
+    public XmlConfigFile GetElementConfig(string elementName) {
       if (!dict.ContainsKey(elementName)) throw new XmlConfigException(
           ("The element named '" + elementName + "' can't be found."));
       return new XmlConfigFile(dict[elementName]);
@@ -158,7 +158,7 @@ public XmlConfigFile GetElementConfig(string elementName) {
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
     /// <returns>A Boolean object.</returns>
-public bool Exists(string elementName) {
+    public bool Exists(string elementName) {
       return dict.ContainsKey(elementName);
     }
 
@@ -173,8 +173,8 @@ public bool Exists(string elementName) {
     /// exist.</exception>
     public string GetAttribute(string elementName, string attributeName) {
       if (elementName == null) {
- throw new ArgumentNullException("elementName");
-}
+        throw new ArgumentNullException("elementName");
+      }
       if (!dict.ContainsKey(elementName)) throw new XmlConfigException(
           ("The element named '" + elementName + "' can't be found."));
       return dict[elementName].GetAttribute(attributeName);
@@ -184,14 +184,14 @@ public bool Exists(string elementName) {
     /// <param name='elementName'>Another string object.</param>
     /// <param name='defaultValue'>A string object. (3).</param>
     /// <returns>A string object.</returns>
-public string GetValue(string elementName, string defaultValue) {
+    public string GetValue(string elementName, string defaultValue) {
       return Exists(elementName) ? GetValue(elementName) : defaultValue;
     }
 
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>Another string object.</param>
     /// <returns>A string object.</returns>
-public string GetValue(string elementName) {
+    public string GetValue(string elementName) {
       if (!dict.ContainsKey(elementName)) throw new XmlConfigException(
           ("The element named '" + elementName + "' can't be found."));
       return dict[elementName].InnerText;
@@ -201,14 +201,14 @@ public string GetValue(string elementName) {
     /// <param name='elementName'>A string object.</param>
     /// <param name='defaultValue'>A 32-bit signed integer. (2).</param>
     /// <returns>A 32-bit signed integer.</returns>
-public int GetValueAsInt32(string elementName, int defaultValue) {
+    public int GetValueAsInt32(string elementName, int defaultValue) {
       return Exists(elementName) ? GetValueAsInt32(elementName) : defaultValue;
     }
 
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
     /// <returns>A 32-bit signed integer.</returns>
-public int GetValueAsInt32(string elementName) {
+    public int GetValueAsInt32(string elementName) {
       try {
         return XmlConvert.ToInt32(GetValue(elementName));
       } catch (FormatException e) {
@@ -226,14 +226,14 @@ public int GetValueAsInt32(string elementName) {
     /// <param name='elementName'>A string object.</param>
     /// <param name='defaultValue'>A 64-bit floating-point number. (2).</param>
     /// <returns>A 64-bit floating-point number.</returns>
-public double GetValueAsDouble(string elementName, double defaultValue) {
+    public double GetValueAsDouble(string elementName, double defaultValue) {
       return Exists(elementName) ? GetValueAsDouble(elementName) : defaultValue;
     }
 
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
     /// <returns>A 64-bit floating-point number.</returns>
-public double GetValueAsDouble(string elementName) {
+    public double GetValueAsDouble(string elementName) {
       try {
         return XmlConvert.ToDouble(GetValue(elementName));
       } catch (FormatException e) {
@@ -247,14 +247,12 @@ public double GetValueAsDouble(string elementName) {
       }
     }
     private static int ToHex(char c) {
-      int ic=(int)c;
-      if (ic>= (int)'0' && ic<= (int)'9') {
- return ic-(int)'0';
-}
-      if (ic>= (int)'A' && ic<= (int)'f') {
- return ic+10-(int)'A';
-}
-      return (ic>= (int)'a' && ic<= (int)'f') ? (ic+10-(int)'a') : (-1);
+      var ic = (int)c;
+      if (ic >= (int)'0' && ic <= (int)'9') {
+        return ic - (int)'0';
+      }
+      return (ic >= (int)'A' && ic <= (int)'f') ? (ic + 10 - (int)'A') : ((ic
+        >= (int)'a' && ic <= (int)'f') ? (ic + 10 - (int)'a') : (-1));
     }
     public byte[] GetValueAsByteArray(string elementName, byte[] defaultValue) {
   return Exists(elementName) ? GetValueAsByteArray(elementName) : defaultValue;
@@ -264,19 +262,19 @@ public double GetValueAsDouble(string elementName) {
     }
     public byte[] GetValueAsByteArray(string elementName) {
       string value = GetValue(elementName);
-      if (value.Length%2 != 0)
+      if (value.Length % 2 != 0)
         throw new XmlConfigException(
           ("The hex string in '" + elementName +
             "' contains an odd number of characters."));
-      var data = new byte[value.Length/2];
-      for (int i = 0;i<value.Length;i+=2) {
+      var data = new byte[value.Length / 2];
+      for (int i = 0; i < value.Length; i += 2) {
         int num = ToHex(value[i]);
         int num2 = ToHex(value[i + 1]);
-        if (num<0||num2< 0) {
+        if (num < 0 || num2 < 0) {
           throw new XmlConfigException(
    ("The hex string in '" + elementName + "' contains an illegal character."));
         }
-        data[i >> 1]=(byte)((num << 4)|num2);
+        data[i >> 1] = (byte)((num << 4) | num2);
       }
       return data;
     }

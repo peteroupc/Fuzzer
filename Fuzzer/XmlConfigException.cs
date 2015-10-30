@@ -9,12 +9,12 @@ namespace PeterO {
     /// reading an XML configuration file.</summary>
   [Serializable]
   public sealed class XmlConfigException : SystemException {
-    public XmlConfigException() {}
-    public XmlConfigException(string message):base(message) {}
-    public XmlConfigException(string message, Exception innerException):
-    base(message, innerException) {}
+    public XmlConfigException() { }
+    public XmlConfigException(string message) : base(message) { }
+    public XmlConfigException(string message, Exception innerException) :
+      base(message, innerException) { }
 private XmlConfigException(System.Runtime.Serialization.SerializationInfo info,
-                        System.Runtime.Serialization.StreamingContext context):
-    base(info, context) {}
+                       System.Runtime.Serialization.StreamingContext context) :
+      base(info, context) { }
   }
 }
