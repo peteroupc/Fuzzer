@@ -6,3 +6,5 @@ Fuzzer/bin/
 Fuzzer/obj/
 FuzzerTest/bin/
 FuzzerTest/obj/
+*.suo
+*.user
