@@ -7,8 +7,7 @@ using PeterO;
 
 namespace Fuzzer {
   class MainClass {
-
-    private static void Usage(){
+    private static void Usage() {
       var usageString = @"File Fuzzer
 
 By Peter O. -- Public Domain -- http://peteroupc.github.io/Fuzzer
@@ -20,7 +19,8 @@ It's a command line utility.
 Usage:
 Fuzzer.exe [fuzzer-xml]
 
-fuzzer-xml is an XML file specifying configuration data. If not given, the fuzzer will
+fuzzer-xml is an XML file specifying configuration data. If not given, the
+  fuzzer will
 read the file fuzzer.xml. It has the following XML format:
 
     <fuzzer>

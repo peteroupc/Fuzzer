@@ -41,6 +41,6 @@ Global
     HideSolutionNode = FALSE
   EndGlobalSection
   GlobalSection(MonoDevelopProperties) = preSolution
-        StartupItem = Fuzzer\Fuzzer.csproj
+            StartupItem = Fuzzer\Fuzzer.csproj
   EndGlobalSection
 EndGlobal
