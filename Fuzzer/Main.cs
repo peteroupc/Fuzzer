@@ -140,8 +140,8 @@ read the file fuzzer.xml. It has the following XML format:
         for (int i = 0; i < Math.Max(0, iterations); ++i) {
           string name = Path.Combine(
           path,
-          i.ToString("d5"
-       , System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
+          i.ToString("d5",
+System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);

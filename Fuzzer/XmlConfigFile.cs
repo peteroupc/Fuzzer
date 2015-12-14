@@ -92,7 +92,8 @@ namespace PeterO {
         return new XmlConfigFile(reader, rootElement);
       }
     }
-public static XmlConfigFile Create(TextReader textReader, string rootElement) {
+public static XmlConfigFile Create(TextReader textReader, string
+      rootElement) {
       using (XmlReader reader = XmlReader.Create(textReader)) {
         return new XmlConfigFile(reader, rootElement);
       }
@@ -103,13 +104,15 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
 
     /// <summary>Not documented yet.</summary>
     /// <param name='xml'>A string object.</param>
-    /// <param name='rootElement'>If not null, throws an XmlConfigException if the
-    /// document&apos;s root element name doesn&apos;t match this value.</param>
+    /// <param name='rootElement'>If not null, throws an XmlConfigException
+    /// if the document's root element name doesn't match this
+    /// value.</param>
     /// <returns>A XmlConfigFile object.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref name='xml'/>
-    /// is null.</exception>
-    /// <exception cref='XmlConfigException'>The method failed to create the config
-    /// file. The exception's InnerException contains more information.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='xml'/> is null.</exception>
+    /// <exception cref='XmlConfigException'>The method failed to create
+    /// the config file. The exception's InnerException contains more
+    /// information.</exception>
     public static XmlConfigFile FromXmlString(string xml, string rootElement) {
       if (xml == null) {
         throw new ArgumentNullException("xml");
@@ -119,16 +122,18 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
       }
     }
 
-    /// <summary>Gets the value of the specified attribute of the specified child
-    /// element.</summary>
-    /// <param name='attributeName'>Name of the attribute to retrieve.</param>
-    /// <returns>The attribute's value. Returns an empty string if the attribute
-    /// doesn't exist.</returns>
+    /// <summary>Gets the value of the specified attribute of the specified
+    /// child element.</summary>
+    /// <param name='attributeName'>Name of the attribute to
+    /// retrieve.</param>
+    /// <returns>The attribute's value. Returns an empty string if the
+    /// attribute doesn't exist.</returns>
     public string GetRootAttribute(string attributeName) {
       return root.GetAttribute(attributeName);
     }
 
-    /// <summary>Gets the text content of the root element as a string.</summary>
+    /// <summary>Gets the text content of the root element as a
+    /// string.</summary>
     /// <returns>The root's text content.</returns>
     public string GetRootValue() {
       return root.InnerText;
@@ -162,13 +167,15 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
       return dict.ContainsKey(elementName);
     }
 
-    /// <summary>Gets the value of the specified attribute of the specified child
-    /// element.</summary>
-    /// <param name='elementName'>A child element&apos;s name.</param>
-    /// <param name='attributeName'>Name of the attribute to retrieve.</param>
-    /// <returns>The attribute's value. Returns an empty string if the attribute
-    /// doesn't exist.</returns>
-    /// <exception cref='ArgumentNullException'>ElementName is null.</exception>
+    /// <summary>Gets the value of the specified attribute of the specified
+    /// child element.</summary>
+    /// <param name='elementName'>A child element's name.</param>
+    /// <param name='attributeName'>Name of the attribute to
+    /// retrieve.</param>
+    /// <returns>The attribute's value. Returns an empty string if the
+    /// attribute doesn't exist.</returns>
+    /// <exception cref='ArgumentNullException'>ElementName is
+    /// null.</exception>
     /// <exception cref='XmlConfigException'>The child element does not
     /// exist.</exception>
     public string GetAttribute(string elementName, string attributeName) {
@@ -224,7 +231,8 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
 
     /// <summary>Not documented yet.</summary>
     /// <param name='elementName'>A string object.</param>
-    /// <param name='defaultValue'>A 64-bit floating-point number. (2).</param>
+    /// <param name='defaultValue'>A 64-bit floating-point number.
+    /// (2).</param>
     /// <returns>A 64-bit floating-point number.</returns>
     public double GetValueAsDouble(string elementName, double defaultValue) {
       return Exists(elementName) ? GetValueAsDouble(elementName) : defaultValue;
@@ -258,7 +266,8 @@ public static XmlConfigFile Create(TextReader textReader, string rootElement) {
   return Exists(elementName) ? GetValueAsByteArray(elementName) : defaultValue;
     }
     public byte[] GetValueOrEmptyAsByteArray(string elementName) {
-      return Exists(elementName) ? GetValueAsByteArray(elementName) : new byte[] { };
+      return Exists(elementName) ? GetValueAsByteArray(elementName) : new
+        byte[] { };
     }
     public byte[] GetValueAsByteArray(string elementName) {
       string value = GetValue(elementName);

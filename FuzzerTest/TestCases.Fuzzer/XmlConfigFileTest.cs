@@ -32,13 +32,24 @@ namespace TestCases.Fuzzer {
       XmlConfigFile f = XmlConfigFile.FromXmlString(
         "<root><element a='b' c='d'>ElementValue</element></root>",
         "root");
-      Assert.AreEqual("b", f.GetAttribute("element", "a"));
-      Assert.AreEqual("d", f.GetAttribute("element", "c"));
+      {
+string stringTemp = f.GetAttribute("element", "a");
+Assert.AreEqual(
+"b",
+stringTemp);
+}
+      {
+string stringTemp = f.GetAttribute("element", "c");
+Assert.AreEqual(
+"d",
+stringTemp);
+}
       try {
         f.GetAttribute("notfound", "");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -64,12 +75,20 @@ namespace TestCases.Fuzzer {
         f.GetValue("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
-      Assert.IsNull(f.GetValue("notfound", null));
-      Assert.AreEqual("ElementValue", f.GetValue("element"));
+      if ((f.GetValue("notfound", null)) != null) {
+ Assert.Fail();
+ }
+      {
+string stringTemp = f.GetValue("element");
+Assert.AreEqual(
+"ElementValue",
+stringTemp);
+}
     }
     [TestMethod]
     public void GetValueAsByteArray() {
@@ -81,7 +100,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -89,13 +109,16 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
-      Assert.IsNull(f.GetValueAsByteArray("notfound", null));
+      if ((f.GetValueAsByteArray("notfound", null)) != null) {
+ Assert.Fail();
+ }
       Assert.AreEqual(new byte[] { 0x01, 0x02, 0x0a, 0x2b },
-                      f.GetValueAsByteArray("element"));
+                    f.GetValueAsByteArray("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>0102030s</element></root>",
         "root");
@@ -103,7 +126,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -111,7 +135,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -122,7 +147,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -130,7 +156,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -141,7 +168,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -149,7 +177,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -164,7 +193,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -172,13 +202,14 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
       Assert.AreEqual(0.1, f.GetValueAsDouble("notfound", 0.1));
       Assert.AreEqual(36789.5,
-                      f.GetValueAsDouble("element"));
+                    f.GetValueAsDouble("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>36789.5dsfe</element></root>",
         "root");
@@ -186,7 +217,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -194,7 +226,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -205,7 +238,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -213,7 +247,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -228,7 +263,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -236,13 +272,14 @@ namespace TestCases.Fuzzer {
         f.GetValueAsInt32("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
       Assert.AreEqual(0, f.GetValueAsInt32("notfound", 0));
       Assert.AreEqual(36789,
-                      f.GetValueAsInt32("element"));
+                    f.GetValueAsInt32("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>36789dsfe</element></root>",
         "root");
@@ -250,7 +287,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -258,7 +296,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -269,7 +308,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
@@ -277,7 +317,8 @@ namespace TestCases.Fuzzer {
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-      } catch (Exception ex) {
+Console.Write(String.Empty);
+} catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
