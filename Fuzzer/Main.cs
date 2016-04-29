@@ -141,7 +141,7 @@ read the file fuzzer.xml. It has the following XML format:
           string name = Path.Combine(
           path,
           i.ToString("d5",
-System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
+  System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);

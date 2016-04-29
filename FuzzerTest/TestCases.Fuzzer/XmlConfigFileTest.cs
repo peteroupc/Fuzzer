@@ -35,20 +35,20 @@ namespace TestCases.Fuzzer {
       {
 string stringTemp = f.GetAttribute("element", "a");
 Assert.AreEqual(
-"b",
-stringTemp);
+  "b",
+  stringTemp);
 }
       {
 string stringTemp = f.GetAttribute("element", "c");
 Assert.AreEqual(
-"d",
-stringTemp);
+  "d",
+  stringTemp);
 }
       try {
         f.GetAttribute("notfound", "");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -75,7 +75,7 @@ Console.Write(String.Empty);
         f.GetValue("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -86,8 +86,8 @@ Console.Write(String.Empty);
       {
 string stringTemp = f.GetValue("element");
 Assert.AreEqual(
-"ElementValue",
-stringTemp);
+  "ElementValue",
+  stringTemp);
 }
     }
     [TestMethod]
@@ -100,7 +100,7 @@ stringTemp);
         f.GetValueAsByteArray(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -109,7 +109,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -126,7 +126,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -135,7 +135,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -147,7 +147,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -156,7 +156,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -168,7 +168,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -177,7 +177,7 @@ Console.Write(String.Empty);
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -193,7 +193,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -202,7 +202,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -217,7 +217,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -226,7 +226,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -238,7 +238,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -247,7 +247,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -263,7 +263,7 @@ Console.Write(String.Empty);
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -272,7 +272,7 @@ Console.Write(String.Empty);
         f.GetValueAsInt32("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -287,7 +287,7 @@ Console.Write(String.Empty);
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -296,7 +296,7 @@ Console.Write(String.Empty);
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -308,7 +308,7 @@ Console.Write(String.Empty);
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -317,7 +317,7 @@ Console.Write(String.Empty);
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-Console.Write(String.Empty);
+new Object();
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
