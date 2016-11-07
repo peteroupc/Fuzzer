@@ -1,10 +1,12 @@
+*.bat
 *.dll
 *.exe
+*.jar
+*.suo
+*.user
 *.userprefs
 *.usertasks
 Fuzzer/bin/
 Fuzzer/obj/
 FuzzerTest/bin/
 FuzzerTest/obj/
-*.suo
-*.user
