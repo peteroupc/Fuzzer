@@ -2,11 +2,14 @@
 *.dll
 *.exe
 *.jar
+*.map
 *.suo
 *.user
 *.userprefs
 *.usertasks
+.nuget/
 Fuzzer/bin/
 Fuzzer/obj/
 FuzzerTest/bin/
 FuzzerTest/obj/
+packages/
