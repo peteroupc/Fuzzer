@@ -6,7 +6,9 @@ using System.Xml;
 using PeterO;
 
 namespace Fuzzer {
-  class MainClass {
+  internal  // / <summary>Not documented yet.</summary>
+  internal class MainClass {
+    /// <summary>Not documented yet.</summary>
     private static void Usage() {
       var usageString = @"File Fuzzer
 
@@ -53,13 +55,23 @@ read the file fuzzer.xml. It has the following XML format:
       Console.WriteLine(usageString);
     }
 
+    /// <summary>Not documented yet.</summary>
+    /// <param name='r'>Not documented yet.</param>
+    /// <param name='mean'>Not documented yet.</param>
+    /// <param name='sd'>Not documented yet. (3).</param>
+    /// <returns>A 32-bit signed integer.</returns>
     public static int NextGaussian(Random r, int mean, int sd) {
       double left = Math.Cos((Math.PI + Math.PI) * r.NextDouble());
       double right = Math.Sqrt(-2 * Math.Log(r.NextDouble()));
       return (int)Math.Round(mean + sd * left * right);
     }
 
-    public static void WriteFuzzedFileWithHeader(byte[] startbytes, Random rnd,
+    /// <summary>Not documented yet.</summary>
+    /// <param name='startbytes'>Not documented yet.</param>
+    /// <param name='rnd'>Not documented yet.</param>
+    /// <param name='outputFile'>Not documented yet. (3).</param>
+    public static void WriteFuzzedFileWithHeader(byte[] startbytes,
+ Random rnd,
       string outputFile) {
       using (var fs = new FileStream(outputFile, FileMode.Create)) {
         Console.WriteLine(outputFile);
@@ -70,6 +82,13 @@ read the file fuzzer.xml. It has the following XML format:
         fs.Write(array, 0, count);
       }
     }
+
+    /// <summary>Not documented yet.</summary>
+    /// <param name='bytes'>Not documented yet.</param>
+    /// <param name='rnd'>Not documented yet.</param>
+    /// <param name='outputFile'>Not documented yet. (3).</param>
+    /// <param name='fuzzStart'>Not documented yet. (4).</param>
+    /// <param name='frequency'>Not documented yet. (5).</param>
     public static void WriteVariation(
     byte[] bytes,
     Random rnd,
@@ -104,6 +123,10 @@ read the file fuzzer.xml. It has the following XML format:
       }
     }
 
+    /// <summary>Not documented yet.</summary>
+    /// <param name='path'>Not documented yet.</param>
+    /// <param name='pattern'>Not documented yet.</param>
+    /// <returns>An IList(byte[]) object.</returns>
     public static IList<byte[]> ReadAllBytesInDir(string path, string pattern) {
       IList<byte[]> list = new List<byte[]>();
       if (!Directory.Exists(path)) {
@@ -115,6 +138,9 @@ read the file fuzzer.xml. It has the following XML format:
       return list;
     }
 
+    /// <summary>Not documented yet.</summary>
+    /// <param name='args'>Not documented yet.</param>
+    /// <returns>A 32-bit signed integer.</returns>
     public static int Main(string[] args) {
       try {
         var random = new Random();
@@ -140,13 +166,16 @@ read the file fuzzer.xml. It has the following XML format:
         for (int i = 0; i < Math.Max(0, iterations); ++i) {
           string name = Path.Combine(
           path,
-          i.ToString("d5",
+          i.ToString(
+  "d5",
   System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);
           } else {
-            WriteVariation(fuzzing[index], random, name, fuzzOffset,
+            WriteVariation(
+  fuzzing[index], random, name,
+ fuzzOffset,
               NextGaussian(random, freqMean, freqStdDev));
           }
         }

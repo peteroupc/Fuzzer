@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using PeterO;
 
 namespace TestCases.Fuzzer {
-  [TestClass]
+  [TestFixture]
   public class XmlConfigFileTest {
     //
     //  Public Methods
     //
-    [TestMethod]
+    [Test]
     public void Create() {
       // Not implemented yet.
     }
-    [TestMethod]
+    [Test]
     public void Exists() {
       XmlConfigFile f = XmlConfigFile.FromXmlString(
         "<root><element>ElementValue</element></root>",
@@ -23,11 +23,11 @@ namespace TestCases.Fuzzer {
       Assert.IsTrue(f.Exists("element"));
       Assert.IsFalse(f.Exists("notfound"));
     }
-    [TestMethod]
+    [Test]
     public void GetAllElementConfig() {
       // Not implemented yet.
     }
-    [TestMethod]
+    [Test]
     public void GetAttribute() {
       XmlConfigFile f = XmlConfigFile.FromXmlString(
         "<root><element a='b' c='d'>ElementValue</element></root>",
@@ -54,19 +54,19 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
     }
-    [TestMethod]
+    [Test]
     public void GetElementConfig() {
       // Not implemented yet.
     }
-    [TestMethod]
+    [Test]
     public void GetRootAttribute() {
       // Not implemented yet.
     }
-    [TestMethod]
+    [Test]
     public void GetRootValue() {
       // Not implemented yet.
     }
-    [TestMethod]
+    [Test]
     public void GetValue() {
       XmlConfigFile f = XmlConfigFile.FromXmlString(
         "<root><element>ElementValue</element></root>",
@@ -90,7 +90,7 @@ Assert.AreEqual(
   stringTemp);
 }
     }
-    [TestMethod]
+    [Test]
     public void GetValueAsByteArray() {
       XmlConfigFile f;
       f = XmlConfigFile.FromXmlString(
@@ -183,7 +183,7 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
     }
-    [TestMethod]
+    [Test]
     public void GetValueAsDouble() {
       XmlConfigFile f;
       f = XmlConfigFile.FromXmlString(
@@ -253,7 +253,7 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
     }
-    [TestMethod]
+    [Test]
     public void GetValueAsInt32() {
       XmlConfigFile f;
       f = XmlConfigFile.FromXmlString(
@@ -323,7 +323,7 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
     }
-    [TestMethod]
+    [Test]
     public void GetValueOrEmptyAsByteArray() {
       // Not implemented yet.
     }
