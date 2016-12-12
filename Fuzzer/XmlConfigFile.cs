@@ -8,10 +8,8 @@ using PeterO;
 namespace PeterO {
     /// <summary>Not documented yet.</summary>
   public sealed class XmlConfigFile {
-  internal  // / <summary>Not documented yet.</summary>
-    internal XmlElement root;
-  internal  // / <summary>Not documented yet.</summary>
-    internal Dictionary<string, XmlElement> dict;
+    private XmlElement root;
+    private Dictionary<string, XmlElement> dict;
 
     /// <summary>Not documented yet.</summary>
     /// <param name='element'>Not documented yet.</param>
