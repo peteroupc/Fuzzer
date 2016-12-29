@@ -1,7 +1,7 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Xml;
 using PeterO;
 
@@ -12,7 +12,8 @@ namespace PeterO {
     private Dictionary<string, XmlElement> dict;
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='element'>Not documented yet.</param>
+    /// <param name='element'>The parameter <paramref name='element'/> is
+    /// not documented yet.</param>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='element'/> is null.</exception>
     private void Initialize(XmlElement element) {
@@ -63,10 +64,11 @@ namespace PeterO {
       if (doc.DocumentElement == null) {
         throw new XmlConfigException("The file contains no XML element.");
       }
-      if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement))
-        throw new XmlConfigException(
-          ("The XML file's root element is " + doc.DocumentElement.Name +
-            ", not " + rootElement + "."));
+    if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
+    string msg = "The XML file's root element is " +
+        doc.DocumentElement.Name + ", not " + rootElement + ".";
+ throw new XmlConfigException(msg);
+ }
       this.Initialize(doc.DocumentElement);
     }
 
@@ -101,24 +103,29 @@ namespace PeterO {
       if (doc.DocumentElement == null) {
         throw new XmlConfigException("The file contains no XML element.");
       }
-      if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement))
-        throw new XmlConfigException(
-          ("The XML file's root element is " + doc.DocumentElement.Name +
-            ", not " + rootElement + "."));
+    if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
+    string msg = "The XML file's root element is " +
+        doc.DocumentElement.Name + ", not " + rootElement + ".";
+ throw new XmlConfigException(msg);
+ }
       this.Initialize(doc.DocumentElement);
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='reader'>Not documented yet.</param>
-    /// <param name='rootElement'>Not documented yet.</param>
+    /// <param name='reader'>The parameter <paramref name='reader'/> is not
+    /// documented yet.</param>
+    /// <param name='rootElement'>The parameter <paramref
+    /// name='rootElement'/> is not documented yet.</param>
     /// <returns>A XmlConfigFile object.</returns>
     public static XmlConfigFile Create(XmlReader reader, string rootElement) {
       return new XmlConfigFile(reader, rootElement);
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='stream'>Not documented yet.</param>
-    /// <param name='rootElement'>Not documented yet.</param>
+    /// <param name='stream'>The parameter <paramref name='stream'/> is not
+    /// documented yet.</param>
+    /// <param name='rootElement'>The parameter <paramref
+    /// name='rootElement'/> is not documented yet.</param>
     /// <returns>A XmlConfigFile object.</returns>
     public static XmlConfigFile Create(Stream stream, string rootElement) {
       using (XmlReader reader = XmlReader.Create(stream)) {
@@ -127,19 +134,24 @@ namespace PeterO {
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='textReader'>Not documented yet.</param>
-    /// <param name='rootElement'>Not documented yet.</param>
+    /// <param name='textReader'>The parameter <paramref
+    /// name='textReader'/> is not documented yet.</param>
+    /// <param name='rootElement'>The parameter <paramref
+    /// name='rootElement'/> is not documented yet.</param>
     /// <returns>A XmlConfigFile object.</returns>
-public static XmlConfigFile Create(TextReader textReader,
- string rootElement) {
+public static XmlConfigFile Create(
+  TextReader textReader,
+  string rootElement) {
       using (XmlReader reader = XmlReader.Create(textReader)) {
         return new XmlConfigFile(reader, rootElement);
       }
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='path'>Not documented yet.</param>
-    /// <param name='rootElement'>Not documented yet.</param>
+    /// <param name='path'>The parameter <paramref name='path'/> is not
+    /// documented yet.</param>
+    /// <param name='rootElement'>The parameter <paramref
+    /// name='rootElement'/> is not documented yet.</param>
     /// <returns>A XmlConfigFile object.</returns>
     public static XmlConfigFile Create(string path, string rootElement) {
       return new XmlConfigFile(path, rootElement);
@@ -198,8 +210,10 @@ public static XmlConfigFile Create(TextReader textReader,
     /// <param name='elementName'>A string object.</param>
     /// <returns>A XmlConfigFile object.</returns>
     public XmlConfigFile GetElementConfig(string elementName) {
-      if (!this.dict.ContainsKey(elementName)) throw new XmlConfigException(
+      if (!this.dict.ContainsKey(elementName)) {
+ throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
+ }
       return new XmlConfigFile(this.dict[elementName]);
     }
 
@@ -225,8 +239,10 @@ public static XmlConfigFile Create(TextReader textReader,
       if (elementName == null) {
         throw new ArgumentNullException("elementName");
       }
-      if (!this.dict.ContainsKey(elementName)) throw new XmlConfigException(
+      if (!this.dict.ContainsKey(elementName)) {
+ throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
+ }
       return this.dict[elementName].GetAttribute(attributeName);
     }
 
@@ -243,8 +259,10 @@ public static XmlConfigFile Create(TextReader textReader,
     /// <param name='elementName'>Another string object.</param>
     /// <returns>A string object.</returns>
     public string GetValue(string elementName) {
-      if (!this.dict.ContainsKey(elementName)) throw new XmlConfigException(
+      if (!this.dict.ContainsKey(elementName)) {
+ throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
+ }
       return this.dict[elementName].InnerText;
     }
 
@@ -302,7 +320,8 @@ public static XmlConfigFile Create(TextReader textReader,
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='c'>Not documented yet.</param>
+    /// <param name='c'>The parameter <paramref name='c'/> is not
+    /// documented yet.</param>
     /// <returns>A 32-bit signed integer.</returns>
     private static int ToHex(char c) {
       var ic = (int)c;
@@ -314,8 +333,10 @@ public static XmlConfigFile Create(TextReader textReader,
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='elementName'>Not documented yet.</param>
-    /// <param name='defaultValue'>Not documented yet.</param>
+    /// <param name='elementName'>The parameter <paramref
+    /// name='elementName'/> is not documented yet.</param>
+    /// <param name='defaultValue'>The parameter <paramref
+    /// name='defaultValue'/> is not documented yet.</param>
     /// <returns>A byte array.</returns>
     public byte[] GetValueAsByteArray(string elementName, byte[] defaultValue) {
   return this.Exists(elementName) ? this.GetValueAsByteArray(elementName) :
@@ -323,7 +344,8 @@ public static XmlConfigFile Create(TextReader textReader,
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='elementName'>Not documented yet.</param>
+    /// <param name='elementName'>The parameter <paramref
+    /// name='elementName'/> is not documented yet.</param>
     /// <returns>A byte array.</returns>
     public byte[] GetValueOrEmptyAsByteArray(string elementName) {
   return this.Exists(elementName) ? this.GetValueAsByteArray(elementName) :
@@ -331,13 +353,16 @@ public static XmlConfigFile Create(TextReader textReader,
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='elementName'>Not documented yet.</param>
+    /// <param name='elementName'>The parameter <paramref
+    /// name='elementName'/> is not documented yet.</param>
     /// <returns>A byte array.</returns>
     public byte[] GetValueAsByteArray(string elementName) {
       string value = this.GetValue(elementName);
-      if (value.Length % 2 != 0) throw new XmlConfigException(
-          ("The hex string in '" + elementName +
-            "' contains an odd number of characters."));
+      if (value.Length % 2 != 0) {
+          string msg = "The hex string in '" + elementName +
+            "' contains an odd number of characters.";
+ throw new XmlConfigException(msg);
+ }
       var data = new byte[value.Length / 2];
       for (int i = 0; i < value.Length; i += 2) {
         int num = ToHex(value[i]);

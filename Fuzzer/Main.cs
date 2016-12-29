@@ -1,12 +1,12 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Xml;
 using PeterO;
 
 namespace Fuzzer {
-  internal  // / <summary>Not documented yet.</summary>
+    /// <summary>Not documented yet.</summary>
   internal class MainClass {
     /// <summary>Not documented yet.</summary>
     private static void Usage() {
@@ -56,23 +56,30 @@ read the file fuzzer.xml. It has the following XML format:
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='r'>Not documented yet.</param>
-    /// <param name='mean'>Not documented yet.</param>
-    /// <param name='sd'>Not documented yet. (3).</param>
+    /// <param name='r'>The parameter <paramref name='r'/> is not
+    /// documented yet.</param>
+    /// <param name='mean'>The parameter <paramref name='mean'/> is not
+    /// documented yet.</param>
+    /// <param name='sd'>The parameter <paramref name='sd'/> is not
+    /// documented yet.</param>
     /// <returns>A 32-bit signed integer.</returns>
     public static int NextGaussian(Random r, int mean, int sd) {
       double left = Math.Cos((Math.PI + Math.PI) * r.NextDouble());
       double right = Math.Sqrt(-2 * Math.Log(r.NextDouble()));
-      return (int)Math.Round(mean + sd * left * right);
+      return (int)Math.Round(mean + (sd * left * right));
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='startbytes'>Not documented yet.</param>
-    /// <param name='rnd'>Not documented yet.</param>
-    /// <param name='outputFile'>Not documented yet. (3).</param>
-    public static void WriteFuzzedFileWithHeader(byte[] startbytes,
- Random rnd,
-      string outputFile) {
+    /// <param name='startbytes'>The parameter <paramref
+    /// name='startbytes'/> is not documented yet.</param>
+    /// <param name='rnd'>The parameter <paramref name='rnd'/> is not
+    /// documented yet.</param>
+    /// <param name='outputFile'>The parameter <paramref
+    /// name='outputFile'/> is not documented yet.</param>
+    public static void WriteFuzzedFileWithHeader(
+  byte[] startbytes,
+  Random rnd,
+  string outputFile) {
       using (var fs = new FileStream(outputFile, FileMode.Create)) {
         Console.WriteLine(outputFile);
         fs.Write(startbytes, 0, startbytes.Length);
@@ -84,11 +91,16 @@ read the file fuzzer.xml. It has the following XML format:
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='bytes'>Not documented yet.</param>
-    /// <param name='rnd'>Not documented yet.</param>
-    /// <param name='outputFile'>Not documented yet. (3).</param>
-    /// <param name='fuzzStart'>Not documented yet. (4).</param>
-    /// <param name='frequency'>Not documented yet. (5).</param>
+    /// <param name='bytes'>The parameter <paramref name='bytes'/> is not
+    /// documented yet.</param>
+    /// <param name='rnd'>The parameter <paramref name='rnd'/> is not
+    /// documented yet.</param>
+    /// <param name='outputFile'>The parameter <paramref
+    /// name='outputFile'/> is not documented yet.</param>
+    /// <param name='fuzzStart'>The parameter <paramref name='fuzzStart'/>
+    /// is not documented yet.</param>
+    /// <param name='frequency'>The parameter <paramref name='frequency'/>
+    /// is not documented yet.</param>
     public static void WriteVariation(
     byte[] bytes,
     Random rnd,
@@ -124,8 +136,10 @@ read the file fuzzer.xml. It has the following XML format:
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='path'>Not documented yet.</param>
-    /// <param name='pattern'>Not documented yet.</param>
+    /// <param name='path'>The parameter <paramref name='path'/> is not
+    /// documented yet.</param>
+    /// <param name='pattern'>The parameter <paramref name='pattern'/> is
+    /// not documented yet.</param>
     /// <returns>An IList(byte[]) object.</returns>
     public static IList<byte[]> ReadAllBytesInDir(string path, string pattern) {
       IList<byte[]> list = new List<byte[]>();
@@ -139,7 +153,8 @@ read the file fuzzer.xml. It has the following XML format:
     }
 
     /// <summary>Not documented yet.</summary>
-    /// <param name='args'>Not documented yet.</param>
+    /// <param name='args'>The parameter <paramref name='args'/> is not
+    /// documented yet.</param>
     /// <returns>A 32-bit signed integer.</returns>
     public static int Main(string[] args) {
       try {
@@ -164,17 +179,20 @@ read the file fuzzer.xml. It has the following XML format:
         int freqMean = config.GetValueAsInt32("frequencyMean", 32);
         int freqStdDev = config.GetValueAsInt32("frequencyStdDev", 16);
         for (int i = 0; i < Math.Max(0, iterations); ++i) {
+    string number = i.ToString(
+  "d5",
+  System.Globalization.CultureInfo.InvariantCulture);
           string name = Path.Combine(
           path,
-          i.ToString(
-  "d5",
-  System.Globalization.CultureInfo.InvariantCulture) + "." + extension);
+          number + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);
           } else {
             WriteVariation(
-  fuzzing[index], random, name,
+  fuzzing[index],
+ random,
+ name,
  fuzzOffset,
               NextGaussian(random, freqMean, freqStdDev));
           }

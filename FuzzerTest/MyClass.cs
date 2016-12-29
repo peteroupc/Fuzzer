@@ -12,5 +12,7 @@ using System.Collections.Generic;
 namespace FuzzerTest {
     /// <summary>Description of MyClass.</summary>
   public class MyClass {
+    public static void Main() {
+    }
   }
 }

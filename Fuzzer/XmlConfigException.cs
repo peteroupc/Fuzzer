@@ -1,7 +1,7 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Xml;
 
 namespace PeterO {
@@ -11,12 +11,14 @@ namespace PeterO {
   public sealed class XmlConfigException : SystemException {
     /// <summary>Initializes a new instance of the XmlConfigException
     /// class.</summary>
-    public XmlConfigException() { }
+    public XmlConfigException() {
+}
 
     /// <summary>Initializes a new instance of the XmlConfigException
     /// class.</summary>
     /// <param name='message'>A string object.</param>
-    public XmlConfigException(string message) : base(message) { }
+    public XmlConfigException(string message) : base(message) {
+}
 
     /// <summary>Initializes a new instance of the XmlConfigException
     /// class.</summary>
@@ -32,8 +34,9 @@ namespace PeterO {
     /// object.</param>
     /// <param name='context'>A
     /// System.Runtime.Serialization.StreamingContext object.</param>
-private XmlConfigException(System.Runtime.Serialization.SerializationInfo info,
-                    System.Runtime.Serialization.StreamingContext context) :
+private XmlConfigException(
+  System.Runtime.Serialization.SerializationInfo info,
+  System.Runtime.Serialization.StreamingContext context) :
       base(info, context) {
 }
   }

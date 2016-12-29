@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 using NUnit.Framework;
 using PeterO;
 
 namespace TestCases.Fuzzer {
   [TestFixture]
   public class XmlConfigFileTest {
-    //
-    //  Public Methods
-    //
+    // Public Methods
     [Test]
     public void Create() {
       // Not implemented yet.
@@ -45,7 +43,7 @@ Assert.AreEqual(
   stringTemp);
 }
       try {
-        f.GetAttribute("notfound", "");
+        f.GetAttribute("notfound", String.Empty);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
 new Object();
@@ -80,7 +78,7 @@ new Object();
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
-      if ((f.GetValue("notfound", null)) != null) {
+      if (f.GetValue("notfound", null) != null) {
  Assert.Fail();
  }
       {
@@ -114,10 +112,11 @@ new Object();
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
       }
-      if ((f.GetValueAsByteArray("notfound", null)) != null) {
+      if (f.GetValueAsByteArray("notfound", null) != null) {
  Assert.Fail();
  }
-      Assert.AreEqual(new byte[] { 0x01, 0x02, 0x0a, 0x2b },
+      Assert.AreEqual(
+  new byte[] { 0x01, 0x02, 0x0a, 0x2b },
                     f.GetValueAsByteArray("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>0102030s</element></root>",
@@ -208,8 +207,9 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
       Assert.AreEqual(0.1, f.GetValueAsDouble("notfound", 0.1));
-      Assert.AreEqual(36789.5,
-                    f.GetValueAsDouble("element"));
+      Assert.AreEqual(
+  36789.5,
+  f.GetValueAsDouble("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>36789.5dsfe</element></root>",
         "root");
@@ -278,8 +278,9 @@ new Object();
         throw new InvalidOperationException(String.Empty, ex);
       }
       Assert.AreEqual(0, f.GetValueAsInt32("notfound", 0));
-      Assert.AreEqual(36789,
-                    f.GetValueAsInt32("element"));
+      Assert.AreEqual(
+  36789,
+  f.GetValueAsInt32("element"));
       f = XmlConfigFile.FromXmlString(
         "<root><element>36789dsfe</element></root>",
         "root");
