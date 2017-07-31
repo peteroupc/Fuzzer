@@ -14,5 +14,6 @@ Fuzzer/obj/
 FuzzerTest/bin/
 FuzzerTest/obj/
 encoding/
+encodingfldr/
 packages/
 target/
