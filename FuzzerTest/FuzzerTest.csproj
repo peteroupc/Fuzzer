@@ -5,9 +5,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FuzzerTest</RootNamespace>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+<RootNamespace>FuzzerTest</RootNamespace>
     <AssemblyName>FuzzerTest</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
@@ -66,9 +67,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DefineConstants></DefineConstants>
   </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-     <Reference Include="nunit.framework" />
+     <Reference Include="nunit.framework">
+       <Package>nunit</Package>
+     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
