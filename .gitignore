@@ -4,6 +4,7 @@
 *.exe
 *.jar
 *.map
+*.snk
 *.suo
 *.user
 *.userprefs
