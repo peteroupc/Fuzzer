@@ -46,7 +46,7 @@ Assert.AreEqual(
         f.GetAttribute("notfound", String.Empty);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -73,7 +73,7 @@ new Object();
         f.GetValue("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -98,7 +98,7 @@ Assert.AreEqual(
         f.GetValueAsByteArray(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -107,7 +107,7 @@ new Object();
         f.GetValueAsByteArray("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -125,7 +125,7 @@ new Object();
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -134,7 +134,7 @@ new Object();
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -146,7 +146,7 @@ new Object();
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -155,7 +155,7 @@ new Object();
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -167,7 +167,7 @@ new Object();
         f.GetValueAsByteArray("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -176,7 +176,7 @@ new Object();
         f.GetValueAsByteArray("element", null);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -192,7 +192,7 @@ new Object();
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -201,7 +201,7 @@ new Object();
         f.GetValueAsDouble("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -217,7 +217,7 @@ new Object();
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -226,7 +226,7 @@ new Object();
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -238,7 +238,7 @@ new Object();
         f.GetValueAsDouble("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -247,7 +247,7 @@ new Object();
         f.GetValueAsDouble("element", 0.1);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -263,7 +263,7 @@ new Object();
         f.GetValueAsDouble(null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -272,7 +272,7 @@ new Object();
         f.GetValueAsInt32("notfound");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -288,7 +288,7 @@ new Object();
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -297,7 +297,7 @@ new Object();
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -309,7 +309,7 @@ new Object();
         f.GetValueAsInt32("element");
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -318,7 +318,7 @@ new Object();
         f.GetValueAsInt32("element", 0);
         Assert.Fail("Should have failed");
       } catch (XmlConfigException) {
-new Object();
+// NOTE: Intentionally empty
 } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
