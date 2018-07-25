@@ -18,7 +18,7 @@ namespace PeterO {
     /// name='element'/> is null.</exception>
     private void Initialize(XmlElement element) {
       if (element == null) {
-        throw new ArgumentNullException("element");
+        throw new ArgumentNullException(nameof(element));
       }
       this.root = element;
       this.dict = new Dictionary<string, XmlElement>();
@@ -45,7 +45,7 @@ namespace PeterO {
     /// name='reader'/> is null.</exception>
     private XmlConfigFile(XmlReader reader, string rootElement) {
       if (reader == null) {
-        throw new ArgumentNullException("reader");
+        throw new ArgumentNullException(nameof(reader));
       }
       if (rootElement.Length == 0) {
         throw new ArgumentException("'rootElement' is empty.");
@@ -80,7 +80,7 @@ namespace PeterO {
     /// name='path'/> is null.</exception>
     private XmlConfigFile(string path, string rootElement) {
       if (path == null) {
-        throw new ArgumentNullException("path");
+        throw new ArgumentNullException(nameof(path));
       }
       if (rootElement.Length == 0) {
         throw new ArgumentException("'rootElement' is empty.");
@@ -170,7 +170,7 @@ public static XmlConfigFile Create(
     /// information.</exception>
     public static XmlConfigFile FromXmlString(string xml, string rootElement) {
       if (xml == null) {
-        throw new ArgumentNullException("xml");
+        throw new ArgumentNullException(nameof(xml));
       }
       using (var reader = new StringReader(xml)) {
         return Create(reader, rootElement);
@@ -237,7 +237,7 @@ public static XmlConfigFile Create(
     /// exist.</exception>
     public string GetAttribute(string elementName, string attributeName) {
       if (elementName == null) {
-        throw new ArgumentNullException("elementName");
+        throw new ArgumentNullException(nameof(elementName));
       }
       if (!this.dict.ContainsKey(elementName)) {
  throw new XmlConfigException(
