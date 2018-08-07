@@ -4,6 +4,7 @@
 *.exe
 *.jar
 *.map
+*.nupkg
 *.pyc
 *.snk
 *.suo
@@ -11,6 +12,7 @@
 *.userprefs
 *.usertasks
 .nuget/
+.vs/
 Fuzzer/bin/
 Fuzzer/obj/
 FuzzerTest/bin/
