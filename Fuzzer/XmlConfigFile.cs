@@ -43,6 +43,7 @@ namespace PeterO {
     /// <param name='rootElement'>A string object.</param>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='reader'/> is null.</exception>
+    /// <exception cref='ArgumentException'/>
     private XmlConfigFile(XmlReader reader, string rootElement) {
       if (reader == null) {
         throw new ArgumentNullException(nameof(reader));
@@ -78,6 +79,7 @@ namespace PeterO {
     /// <param name='rootElement'>Another string object.</param>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='path'/> is null.</exception>
+    /// <exception cref='ArgumentException'/>
     private XmlConfigFile(string path, string rootElement) {
       if (path == null) {
         throw new ArgumentNullException(nameof(path));
