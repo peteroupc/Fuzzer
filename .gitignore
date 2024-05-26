@@ -1,12 +1,12 @@
 *.Cache
 *.bat
+*.cache
 *.dll
 *.exe
 *.jar
 *.map
 *.nupkg
 *.pyc
-*.snk
 *.suo
 *.user
 *.userprefs

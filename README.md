@@ -2,8 +2,6 @@
 
 By Peter O. -- Public Domain -- [http://peteroupc.github.io/Fuzzer](http://peteroupc.github.io/Fuzzer)
 
-If you like this software, consider donating to me at this link: [http://peteroupc.github.io/](http://peteroupc.github.io/)
-
 ----
 
 This is a program that generates slightly altered versions

@@ -1,45 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+<Project Sdk='Microsoft.NET.Sdk'>
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{70C84892-288A-4755-965A-9A6EE9C51A56}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <AssemblyName>Fuzzer</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>PeterO.Fuzzer</PackageId>
+    <Title>Fuzzer</Title>
+    <Owners>Peter Occil</Owners>
+    <Authors>Peter Occil</Authors>
+    <PackageLicenseExpression>CC0-1.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/peteroupc/ColorValidator</PackageProjectUrl>
+    <Description>A fuzzer application.
+    </Description>
+    <PackageReleaseNotes>
+    </PackageReleaseNotes>
+    <Copyright>Written by Peter O.  Any copyright to this work is released to the Public Domain.  In case this is not possible, this work is also
+licensed under Creative Commons Zero (CC0): https://creativecommons.org/publicdomain/zero/1.0/</Copyright>
+    <PackOnBuild>true</PackOnBuild>
+    <Version>1.0.0</Version>
+    <Summary>A fuzzer application.</Summary>
+    <PackageTags>colors</PackageTags>
+    <TargetFrameworks>netcoreapp6.0</TargetFrameworks>
+    </PropertyGroup>
+  <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Debug&apos; '>
+    <DocumentationFile>bin\Debug\netstandard1.0\ColorValidator.xml</DocumentationFile>
+  <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
+  <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Release&apos; '>
+    <DebugType/>
+    <DocumentationFile>bin\Release\netstandard1.0\ColorValidator.xml</DocumentationFile>
+  <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/>
+  <AdditionalFiles Include='stylecop.json'/>
+  <AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='7.0.3'/>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="XmlConfigException.cs" />
-    <Compile Include="XmlConfigFile.cs" />
-  </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

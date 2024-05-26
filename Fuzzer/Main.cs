@@ -6,7 +6,7 @@ using System.Xml;
 using PeterO;
 
 namespace Fuzzer {
-    /// <summary>Not documented yet.</summary>
+  /// <summary>Not documented yet.</summary>
   internal class MainClass {
     /// <summary>Not documented yet.</summary>
     private static void Usage() {
@@ -66,7 +66,7 @@ read the file fuzzer.xml. It has the following XML format:
     public static int NextGaussian(Random r, int mean, int sd) {
       double left = Math.Cos((Math.PI + Math.PI) * r.NextDouble());
       double right = Math.Sqrt(-2 * Math.Log(r.NextDouble()));
-      return (int)Math.Round(mean + (sd * left * right));
+      return(int)Math.Round(mean +(sd * left * right));
     }
 
     /// <summary>Not documented yet.</summary>
@@ -77,9 +77,9 @@ read the file fuzzer.xml. It has the following XML format:
     /// <param name='outputFile'>The parameter <paramref
     /// name='outputFile'/> is not documented yet.</param>
     public static void WriteFuzzedFileWithHeader(
-  byte[] startbytes,
-  Random rnd,
-  string outputFile) {
+      byte[] startbytes,
+      Random rnd,
+      string outputFile) {
       using (var fs = new FileStream(outputFile, FileMode.Create)) {
         Console.WriteLine(outputFile);
         fs.Write(startbytes, 0, startbytes.Length);
@@ -102,11 +102,11 @@ read the file fuzzer.xml. It has the following XML format:
     /// <param name='frequency'>The parameter <paramref name='frequency'/>
     /// is not documented yet.</param>
     public static void WriteVariation(
-    byte[] bytes,
-    Random rnd,
-    string outputFile,
-    int fuzzStart,
-    int frequency) {
+      byte[] bytes,
+      Random rnd,
+      string outputFile,
+      int fuzzStart,
+      int frequency) {
       int mode = rnd.Next(3);
       int realSize = bytes.Length;
       if (frequency < 1) {
@@ -123,7 +123,7 @@ read the file fuzzer.xml. It has the following XML format:
         Console.WriteLine(outputFile);
         for (int i = Math.Max(0, fuzzStart); i < bytesLength; ++i) {
           if (rnd.Next(frequency) == 0) {
-            clonedBytes[i] = (byte)rnd.Next(256);
+            clonedBytes[i] =(byte)rnd.Next(256);
           }
         }
         fs.Write(clonedBytes, 0, bytesLength);
@@ -141,7 +141,8 @@ read the file fuzzer.xml. It has the following XML format:
     /// <param name='pattern'>The parameter <paramref name='pattern'/> is
     /// not documented yet.</param>
     /// <returns>An IList(byte[]) object.</returns>
-    public static IList<byte[]> ReadAllBytesInDir(string path, string pattern) {
+    public static IList<byte[]> ReadAllBytesInDir(string path,
+      string pattern) {
       IList<byte[]> list = new List<byte[]>();
       if (!Directory.Exists(path)) {
         return list;
@@ -165,13 +166,13 @@ read the file fuzzer.xml. It has the following XML format:
           return 1;
         }
         XmlConfigFile config = XmlConfigFile.Create(
-           configFile,
-           "fuzzer");
+          configFile,
+          "fuzzer");
         string path = config.GetValue("outputPath");
         byte[] startbytes = config.GetValueOrEmptyAsByteArray("startBytes");
         IList<byte[]> fuzzing = ReadAllBytesInDir(
-        config.GetValue("validFilesPath"),
-        config.GetValue("validFilesPattern", "*.*"));
+            config.GetValue("validFilesPath"),
+            config.GetValue("validFilesPattern", "*.*"));
         string extension = config.GetValue("fileExtension", "dat");
         Directory.CreateDirectory(path);
         int fuzzOffset = config.GetValueAsInt32("fuzzOffset", 0);
@@ -179,21 +180,21 @@ read the file fuzzer.xml. It has the following XML format:
         int freqMean = config.GetValueAsInt32("frequencyMean", 32);
         int freqStdDev = config.GetValueAsInt32("frequencyStdDev", 16);
         for (int i = 0; i < Math.Max(0, iterations); ++i) {
-    string number = i.ToString(
-  "d5",
-  System.Globalization.CultureInfo.InvariantCulture);
+          string number = i.ToString(
+            "d5",
+            System.Globalization.CultureInfo.InvariantCulture);
           string name = Path.Combine(
-          path,
-          number + "." + extension);
+            path,
+            number + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);
           } else {
             WriteVariation(
-  fuzzing[index],
- random,
- name,
- fuzzOffset,
+              fuzzing[index],
+              random,
+              name,
+              fuzzOffset,
               NextGaussian(random, freqMean, freqStdDev));
           }
         }

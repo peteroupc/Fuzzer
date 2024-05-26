@@ -6,7 +6,7 @@ using System.Xml;
 using PeterO;
 
 namespace PeterO {
-    /// <summary>Not documented yet.</summary>
+  /// <summary>Not documented yet.</summary>
   public sealed class XmlConfigFile {
     private XmlElement root;
     private Dictionary<string, XmlElement> dict;
@@ -66,11 +66,12 @@ namespace PeterO {
       if (doc.DocumentElement == null) {
         throw new XmlConfigException("The file contains no XML element.");
       }
-    if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
-    string msg = "The XML file's root element is " +
-        doc.DocumentElement.Name + ", not " + rootElement + ".";
- throw new XmlConfigException(msg);
- }
+      if (
+        rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
+        string msg = "The XML file's root element is " +
+          doc.DocumentElement.Name + ", not " + rootElement + ".";
+        throw new XmlConfigException(msg);
+      }
       this.Initialize(doc.DocumentElement);
     }
 
@@ -107,11 +108,12 @@ namespace PeterO {
       if (doc.DocumentElement == null) {
         throw new XmlConfigException("The file contains no XML element.");
       }
-    if (rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
-    string msg = "The XML file's root element is " +
-        doc.DocumentElement.Name + ", not " + rootElement + ".";
- throw new XmlConfigException(msg);
- }
+      if (
+        rootElement != null && !doc.DocumentElement.Name.Equals(rootElement)) {
+        string msg = "The XML file's root element is " +
+          doc.DocumentElement.Name + ", not " + rootElement + ".";
+        throw new XmlConfigException(msg);
+      }
       this.Initialize(doc.DocumentElement);
     }
 
@@ -143,9 +145,9 @@ namespace PeterO {
     /// <param name='rootElement'>The parameter <paramref
     /// name='rootElement'/> is not documented yet.</param>
     /// <returns>A XmlConfigFile object.</returns>
-public static XmlConfigFile Create(
-  TextReader textReader,
-  string rootElement) {
+    public static XmlConfigFile Create(
+      TextReader textReader,
+      string rootElement) {
       using (XmlReader reader = XmlReader.Create(textReader)) {
         return new XmlConfigFile(reader, rootElement);
       }
@@ -215,9 +217,9 @@ public static XmlConfigFile Create(
     /// <returns>A XmlConfigFile object.</returns>
     public XmlConfigFile GetElementConfig(string elementName) {
       if (!this.dict.ContainsKey(elementName)) {
- throw new XmlConfigException(
+        throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
- }
+      }
       return new XmlConfigFile(this.dict[elementName]);
     }
 
@@ -244,9 +246,9 @@ public static XmlConfigFile Create(
         throw new ArgumentNullException(nameof(elementName));
       }
       if (!this.dict.ContainsKey(elementName)) {
- throw new XmlConfigException(
+        throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
- }
+      }
       return this.dict[elementName].GetAttribute(attributeName);
     }
 
@@ -255,7 +257,7 @@ public static XmlConfigFile Create(
     /// <param name='defaultValue'>A string object. (3).</param>
     /// <returns>A string object.</returns>
     public string GetValue(string elementName, string defaultValue) {
-   return this.Exists(elementName) ? this.GetValue(elementName) :
+      return this.Exists(elementName) ? this.GetValue(elementName) :
         defaultValue;
     }
 
@@ -264,9 +266,9 @@ public static XmlConfigFile Create(
     /// <returns>A string object.</returns>
     public string GetValue(string elementName) {
       if (!this.dict.ContainsKey(elementName)) {
- throw new XmlConfigException(
+        throw new XmlConfigException(
           "The element named '" + elementName + "' can't be found.");
- }
+      }
       return this.dict[elementName].InnerText;
     }
 
@@ -287,12 +289,12 @@ public static XmlConfigFile Create(
         return XmlConvert.ToInt32(this.GetValue(elementName));
       } catch (FormatException e) {
         throw new XmlConfigException(
-  "The element named '" + elementName + "' doesn't contain a valid integer.",
-  e);
+          "The element named '" + elementName + "' doesn't contain a valid integer.",
+          e);
       } catch (OverflowException e) {
         throw new XmlConfigException(
-  "The element named '" + elementName + "' doesn't contain a valid integer.",
-  e);
+          "The element named '" + elementName + "' doesn't contain a valid integer.",
+          e);
       }
     }
 
@@ -314,12 +316,12 @@ public static XmlConfigFile Create(
         return XmlConvert.ToDouble(this.GetValue(elementName));
       } catch (FormatException e) {
         throw new XmlConfigException(
-   "The element named '" + elementName + "' doesn't contain a valid number.",
-   e);
+          "The element named '" + elementName + "' doesn't contain a valid number.",
+          e);
       } catch (OverflowException e) {
         throw new XmlConfigException(
-   "The element named '" + elementName + "' doesn't contain a valid number.",
-   e);
+          "The element named '" + elementName + "' doesn't contain a valid number.",
+          e);
       }
     }
 
@@ -333,7 +335,7 @@ public static XmlConfigFile Create(
         return ic - (int)'0';
       }
       return (ic >= (int)'A' && ic <= (int)'f') ? (ic + 10 - (int)'A') : ((ic
-        >= (int)'a' && ic <= (int)'f') ? (ic + 10 - (int)'a') : (-1));
+            >= (int)'a' && ic <= (int)'f') ? (ic + 10 - (int)'a') : (-1));
     }
 
     /// <summary>Not documented yet.</summary>
@@ -342,9 +344,10 @@ public static XmlConfigFile Create(
     /// <param name='defaultValue'>The parameter <paramref
     /// name='defaultValue'/> is not documented yet.</param>
     /// <returns>A byte array.</returns>
-    public byte[] GetValueAsByteArray(string elementName, byte[] defaultValue) {
-  return this.Exists(elementName) ? this.GetValueAsByteArray(elementName) :
-    defaultValue;
+    public byte[] GetValueAsByteArray(string elementName,
+      byte[] defaultValue) {
+      return this.Exists(elementName) ? this.GetValueAsByteArray(
+  elementName) : defaultValue;
     }
 
     /// <summary>Not documented yet.</summary>
@@ -352,8 +355,8 @@ public static XmlConfigFile Create(
     /// name='elementName'/> is not documented yet.</param>
     /// <returns>A byte array.</returns>
     public byte[] GetValueOrEmptyAsByteArray(string elementName) {
-  return this.Exists(elementName) ? this.GetValueAsByteArray(elementName) :
-        new byte[] { };
+      return this.Exists(elementName) ? this.GetValueAsByteArray(
+  elementName) : new byte[] { };
     }
 
     /// <summary>Not documented yet.</summary>
@@ -363,17 +366,18 @@ public static XmlConfigFile Create(
     public byte[] GetValueAsByteArray(string elementName) {
       string value = this.GetValue(elementName);
       if (value.Length % 2 != 0) {
-          string msg = "The hex string in '" + elementName +
-            "' contains an odd number of characters.";
- throw new XmlConfigException(msg);
- }
+        string msg = "The hex string in '" + elementName +
+          "' contains an odd number of characters.";
+        throw new XmlConfigException(msg);
+      }
       var data = new byte[value.Length / 2];
       for (int i = 0; i < value.Length; i += 2) {
         int num = ToHex(value[i]);
         int num2 = ToHex(value[i + 1]);
         if (num < 0 || num2 < 0) {
           throw new XmlConfigException(
-   "The hex string in '" + elementName + "' contains an illegal character.");
+            "The hex string in '" + elementName + "' contains an illegal" +
+"\u0020character.");
         }
         data[i >> 1] = (byte)((num << 4) | num2);
       }
