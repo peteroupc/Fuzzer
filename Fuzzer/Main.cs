@@ -66,7 +66,7 @@ read the file fuzzer.xml. It has the following XML format:
     public static int NextGaussian(Random r, int mean, int sd) {
       double left = Math.Cos((Math.PI + Math.PI) * r.NextDouble());
       double right = Math.Sqrt(-2 * Math.Log(r.NextDouble()));
-      return(int)Math.Round(mean +(sd * left * right));
+      return (int)Math.Round(mean + (sd * left * right));
     }
 
     /// <summary>Not documented yet.</summary>
@@ -123,7 +123,7 @@ read the file fuzzer.xml. It has the following XML format:
         Console.WriteLine(outputFile);
         for (int i = Math.Max(0, fuzzStart); i < bytesLength; ++i) {
           if (rnd.Next(frequency) == 0) {
-            clonedBytes[i] =(byte)rnd.Next(256);
+            clonedBytes[i] = (byte)rnd.Next(256);
           }
         }
         fs.Write(clonedBytes, 0, bytesLength);
