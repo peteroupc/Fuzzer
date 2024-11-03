@@ -22,11 +22,11 @@ licensed under the Unlicense: https://unlicense.org/</Copyright>
     <TargetFrameworks>netcoreapp6.0</TargetFrameworks>
     </PropertyGroup>
   <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Debug&apos; '>
-    <DocumentationFile>bin\Debug\netstandard1.0\ColorValidator.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\ColorValidator.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Release&apos; '>
     <DebugType/>
-    <DocumentationFile>bin\Release\netstandard1.0\ColorValidator.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\ColorValidator.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <ItemGroup>
   <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/>
