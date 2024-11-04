@@ -25,12 +25,12 @@ licensed under the Unlicense: https://unlicense.org/</Copyright>
     <DocumentationFile>bin\Debug\netstandard2.0\ColorValidator.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Release&apos; '>
-    <DebugType/>
+    <DebugType>none</DebugType>
     <DocumentationFile>bin\Release\netstandard2.0\ColorValidator.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <ItemGroup>
   <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/>
   <AdditionalFiles Include='stylecop.json'/>
-  <AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1'/>
+  <AdditionalFiles Include='rules.ruleset'/><!-- PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1' -->
   </ItemGroup>
 </Project>
