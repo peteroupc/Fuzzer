@@ -16,7 +16,7 @@ By Peter O. -- Public Domain -- http://peteroupc.github.io/Fuzzer
 
 This is a program that generates slightly altered versions
 of data files, for testing algorithms that parse file formats.
-It's a command line utility.
+It's a command-line tool.
 
 Usage:
 Fuzzer.exe [fuzzer-xml]
