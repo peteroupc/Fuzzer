@@ -166,8 +166,8 @@ read the file fuzzer.xml. It has the following XML format:
           return 1;
         }
         XmlConfigFile config = XmlConfigFile.Create(
-          configFile,
-          "fuzzer");
+            configFile,
+            "fuzzer");
         string path = config.GetValue("outputPath");
         byte[] startbytes = config.GetValueOrEmptyAsByteArray("startBytes");
         IList<byte[]> fuzzing = ReadAllBytesInDir(
@@ -181,11 +181,11 @@ read the file fuzzer.xml. It has the following XML format:
         int freqStdDev = config.GetValueAsInt32("frequencyStdDev", 16);
         for (int i = 0; i < Math.Max(0, iterations); ++i) {
           string number = i.ToString(
-            "d5",
-            System.Globalization.CultureInfo.InvariantCulture);
+              "d5",
+              System.Globalization.CultureInfo.InvariantCulture);
           string name = Path.Combine(
-            path,
-            number + "." + extension);
+              path,
+              number + "." + extension);
           int index = random.Next(fuzzing.Count + 1);
           if (index == fuzzing.Count) {
             WriteFuzzedFileWithHeader(startbytes, random, name);

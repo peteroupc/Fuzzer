@@ -335,7 +335,7 @@ namespace PeterO {
         return ic - (int)'0';
       }
       return (ic >= (int)'A' && ic <= (int)'f') ? (ic + 10 - (int)'A') : ((ic
-            >= (int)'a' && ic <= (int)'f') ? (ic + 10 - (int)'a') : (-1));
+        >= (int)'a' && ic <= (int)'f') ? (ic + 10 - (int)'a') : (-1));
     }
 
     /// <summary>Not documented yet.</summary>
@@ -347,7 +347,7 @@ namespace PeterO {
     public byte[] GetValueAsByteArray(string elementName,
       byte[] defaultValue) {
       return this.Exists(elementName) ? this.GetValueAsByteArray(
-  elementName) : defaultValue;
+        elementName) : defaultValue;
     }
 
     /// <summary>Not documented yet.</summary>
@@ -356,7 +356,7 @@ namespace PeterO {
     /// <returns>A byte array.</returns>
     public byte[] GetValueOrEmptyAsByteArray(string elementName) {
       return this.Exists(elementName) ? this.GetValueAsByteArray(
-  elementName) : new byte[] { };
+        elementName) : new byte[] { };
     }
 
     /// <summary>Not documented yet.</summary>
@@ -377,7 +377,7 @@ namespace PeterO {
         if (num < 0 || num2 < 0) {
           throw new XmlConfigException(
             "The hex string in '" + elementName + "' contains an illegal" +
-"\u0020character.");
+            "\u0020character.");
         }
         data[i >> 1] = (byte)((num << 4) | num2);
       }
