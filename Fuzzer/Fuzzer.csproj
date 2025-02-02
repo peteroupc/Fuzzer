@@ -31,6 +31,6 @@ licensed under the Unlicense: https://unlicense.org/</Copyright>
   <ItemGroup>
   <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/>
   <AdditionalFiles Include='stylecop.json'/>
-  <AdditionalFiles Include='rules.ruleset'/><!-- PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1' -->
+  <AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1' -->
   </ItemGroup>
 </Project>
